@@ -1,0 +1,22 @@
+<p>owner-list works!</p>
+<div class="col-md-4 offset-md-3">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">email</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of owners; index as i" (click)="getOwnerByidFromService(item)">
+
+        <td>{{ item.name  }}</td>
+        <td>{{ item.email }}</td>
+        <td><button class="btn btn-info" [disabled]="owner?.id == null" [routerLink]="['/updateOwner', owner?.id]"  >Edit</button></td>
+        <td><button class="btn btn-danger" (click)=" deleteOwner(item.id)">Delete</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

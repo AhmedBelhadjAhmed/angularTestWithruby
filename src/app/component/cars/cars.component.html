@@ -1,0 +1,47 @@
+<p>cars works!</p>
+
+<div class="col-md-4 offset-md-3">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"><i class="fa fa-light fa-user-plus"> </i> Name</th>
+        <th scope="col">Name</th>
+        <th scope="col">Model</th>
+        <th scope="col">Year</th>
+
+        <th scope="col">owner</th>
+        <th scope="col"> </th>
+        <th scope="col" >Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cars; index as i" (click)="onCarSelected(item)">
+        <td>{{ i }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.model }}</td>
+        <td>{{ item.year }}</td>
+        <td>{{ item.owner.name }}</td>
+
+
+
+        <td><button class="btn btn-info" [disabled]="selectedCar?.id == null" [routerLink]="['/updateCar', selectedCar?.id]"  >Edit</button></td>
+
+        <td><button class="btn btn-danger" (click)="deleteCar(item.id)">Delete</button></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="selectedCar">
+  <p>details car:</p>
+  <ul>
+    <li>id: {{ selectedCar.id }}</li>
+    <li>Name: {{ selectedCar.name }}</li>
+    <li>Model: {{ selectedCar.model }}</li>
+    <li>Year: {{ selectedCar.year }}</li>
+    <li>Year: {{ selectedCar.created_at }}</li>
+    <li>owner name: {{ selectedCar.owner.name }}</li>
+    <td>owner email: {{selectedCar.owner.email}}</td>
+  </ul>
+</div>

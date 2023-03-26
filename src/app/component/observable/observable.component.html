@@ -1,0 +1,10 @@
+<p>observable works!</p>
+{{ seconds }}
+
+<div>
+  <qr-code [value] = "qrcode" [size] = "150" background="blue" foreground="yellow"></qr-code>
+</div>
+<div class="form-group   col-md-4 mt-2 " style="margin-left: 5px;" >
+  <input type="text" class="form-control" [(ngModel)]="qrcode" >
+</div>
+

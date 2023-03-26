@@ -1,0 +1,50 @@
+<p>carsform works!</p>
+<div class="col-md-4 offset-md-4  ">
+  <div class="container">
+    <h3><u>Create car</u></h3>
+    <form autocomplete="off"  #f="ngForm" (ngSubmit)="onSbmit(f)">
+      <div class="form-group ">
+        <label for="name" class="form-label">Car name</label>
+        <input type="text" class="form-control" name="name" id="name"   placeholder="Enter la marque de la voiture"
+        ngModel name = "name"
+        [(ngModel)]="car.name"
+        #name = "ngModel"
+        required>
+        <div class="alert alert-danger"  *ngIf="name.touched && !name.valid" >name required</div>
+      </div>
+      <div class="form-group mb-4">
+        <label for="model" class="form-label">Model</label>
+        <input type="text" class="form-control" name= "model" id="model" placeholder="Model"
+         ngModel name="model"
+         [(ngModel)]="car.model"
+         #model = "ngModel"
+         required>
+        <div class="alert alert-danger"  *ngIf="model.touched && !model.valid" >model required</div>
+      </div>
+      <div class="form-group mb-4">
+        <label for="year" class="form-label">Year</label>
+        <input type="number" class="form-control" name="year" id="year" placeholder="year"
+         [(ngModel)]="car.year"
+         #year = "ngModel"
+         required>
+        <div class="alert alert-danger"  *ngIf="year.touched && !year.valid" >year required</div>
+      </div>
+
+      <div class="form-group mb-4">
+        <label for="owner" class="form-label">Owner</label>
+        <div class="input-group">
+          <select class="form-control" name="owner" id="owner" [(ngModel)]="car.owner_id" #owner="ngModel" ngModel name="owner" required>
+            <option *ngFor="let owner of owners" [value]="owner.id">{{owner.name}} </option>
+          </select>
+          <span class="input-group-append">
+            <span class="input-group-text"><b>+</b></span>
+          </span>
+        </div>
+        <div class="alert alert-danger" *ngIf="owner.touched && !owner.valid">owner required</div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary mb-4" [disabled]="!f.valid"   >Submit</button>
+    </form>
+  </div>
+</div>

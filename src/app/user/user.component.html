@@ -1,0 +1,43 @@
+<h1 style="text-align: center;">welcome : {{name}} from {{getLocation()}}</h1>
+
+<div class="row">
+  <div class="card">
+    <div class="col-md-4 offset-md-4 " >
+      <div class="card-header"><h4 class="text-center">Two Way Binding</h4></div>
+      <div class="card-body">
+        <input type="text"  class="form-control" [(ngModel)]="message">{{message}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row d-flex justify-content-center">
+  <button type="button" class="btn btn-link" routerLink="/register"> Go to Register page </button>
+</div>
+
+<div class="row d-flex justify-content-center">
+
+  <button type="button" class="btn btn-link"  (click)="goToRegister()"> Go to Register page </button>
+
+</div>
+
+<div class="col-md-4 offset-md-3">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col"><i class="fa fa-light fa-user-plus"> </i> Name</th>
+        <th scope="col">Code</th>
+        <th scope="col">Country</th>
+        <th scope="col">User</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tab; index as i">
+
+        <td>{{ item.nom }}</td>
+        <td>{{ item.code }}</td>
+        <td>{{ item.country }}</td>
+        <td><i class="fa fa-commenting" aria-hidden="true"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

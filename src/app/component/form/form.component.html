@@ -1,0 +1,47 @@
+<div class="col-md-4 offset-md-4  ">
+  <div class="container">
+    <h3><u>Contact</u></h3>
+    <form autocomplete="off"  #f = "ngForm" (ngSubmit)="onSbmit(f)">
+      <div class="form-group ">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email" id="email"   placeholder="Enter email"
+        ngModel name = "email"
+        [(ngModel)]="login.email"
+        #email = "ngModel"
+        minlength="5"
+        required
+        >
+        <div class="alert alert-danger"  *ngIf="email.touched && !email.valid" >required
+          <div class="alert alert-danger"  *ngIf=" email?.errors?.[ 'required']" >second error</div>
+          <div class="alert alert-danger"  *ngIf="email?.errors?.[ 'minlength']" >minlength</div>
+        </div>
+
+      </div>
+      <div class="form-group mb-4">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name= "password" id="password" placeholder="Password"
+         ngModel name="password"
+         [(ngModel)]="login.password"
+         #password = "ngModel"
+         required
+         minlength="8"
+        >
+
+        <div class="alert alert-danger"  *ngIf="password.touched && !password.valid" >required</div>
+      </div>
+      <div class="form-group mb-4">
+        <label for="confirm_password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Confirm Password"
+
+         [(ngModel)]="confirm"
+         #confirm_password = "ngModel"
+         pattern="{{login.password}}"
+         required
+        >
+      </div>
+      <button type="submit" class="btn btn-primary mb-4">Submit</button>
+    </form>
+  </div>
+</div>
+
+
